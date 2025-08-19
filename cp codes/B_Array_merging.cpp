@@ -1,0 +1,56 @@
+/*ॐ वासुदेवाय नमः*/
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fast_io ios::sync_with_stdio(0); cin.tie(0);
+#define fx(i, x, y) for (int i = x; i < y; i++)
+#define f(i,y) for (int i = 0; i < y; i++)
+#define mx_e(a) *max_element(a.begin(), a.end())
+#define mn_e(a) *min_element(a.begin(), a.end())
+#define vin(a, n)vector<int> a(n); for (int i=0;i<n;i++) cin >> a[i];
+#define vout(a) for (auto i : a) cout << i << ' '; cout << "\n";
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define st(v, x) (x == 1 ? sort(v.begin(), v.end()) : sort(v.rbegin(), v.rend()))
+#define int long long
+#define sum(a) accumulate(a.begin(), a.end(),0)
+#define el endl
+
+void Ads_Solution() {
+  int n;
+  cin>>n;
+  vin(a,n);
+  vin(v,n);
+            int c=1;
+            map<int,int> l_sub_a;
+            map<int,int> l_sub_b;
+        fx(i,1,n){
+            if(a[i-1] == a[i])c++;
+            else{
+                l_sub_a[a[i-1]] =max(l_sub_a[a[i-1]],c);
+                c=1;
+            }
+        }
+        l_sub_a[a[n-1]] =max(l_sub_a[a[n-1]],c);
+        c=1;
+        fx(i,1,n){
+            if(v[i-1] == v[i])c++;
+            else{
+                 l_sub_b[v[i-1]] =max(l_sub_b[v[i-1]],c);
+                c=1;
+            }
+        }
+      l_sub_b[v[n-1]] =max(l_sub_b[v[n-1]],c);
+      int mx=-1;
+      for(int i=1;i<=2*n;i++)mx = max(mx,l_sub_a[i] +l_sub_b[i]);
+        cout<<mx<<endl;
+}
+
+int32_t main() {
+    fast_io;
+    int t=1;
+    cin >> t;
+    while (t--) {
+       Ads_Solution();
+    }
+}
