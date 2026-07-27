@@ -17,7 +17,6 @@ CSE undergraduate at Rangamati Science and Technology University (RMSTU), buildi
 ## 💡 Interests
 
 - Computer vision and mobile/embedded ML — quantized model deployment (INT8), on-device inference
-- 
 - Competitive programming — active on [Codeforces](https://codeforces.com/profile/coder_arindam) as **coder_arindam**
 - AI/ML mathematics, from foundations toward research-grade depth
 
