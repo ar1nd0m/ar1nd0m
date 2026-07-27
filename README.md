@@ -2,7 +2,7 @@
 
 CSE undergraduate at Rangamati Science and Technology University (RMSTU), building things across systems programming, computer vision, and everyday applications — and chasing a research gap in on-device object detection along the way.
 
-## 🔭 What I'm working on
+## 🔭 What I've worked on
 
 - **[BRSDD-YOLOv8-Object-Detection](https://github.com/ar1nd0m/BRSDD-YOLOv8-Object-Detection)** — YOLOv8n trained on the Bangladeshi Road Sign Detection Dataset (BRSDD), with export to TFLite (float32 + int8) and a real-time webcam/video inference pipeline. 99.49% mAP@0.5 on validation.
 - **[QuizApp](https://github.com/ar1nd0m/QuizApp)** — Upload photos of your notes and get an instant AI-generated summary, audio narration, and quiz, powered by Gemini and Streamlit.
