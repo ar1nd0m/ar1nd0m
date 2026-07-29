@@ -3,15 +3,16 @@
 using namespace std;
 
 int power(int x, unsigned int y){
-int res = 1;
-while (y > 0) {
-if (y & 1)
-res = res * x;
-y = y >> 1;
-x = x * x;
+    int res = 1;
+    while (y > 0) {
+        if (y & 1)
+        res = res * x;
+        y = y >> 1;
+        x = x * x;
+    }
+    return res;
 }
-return res;
-}
+//in this problem i thought +/+/+/ is the optimal solution but it fails for large b then in yt does like that +++++///// then use a loop for minimize it 0 to 32 
 #define fast_io ios::sync_with_stdio(0); cin.tie(0);
 #define fx(i, x, y) for (int i = x; i < y; i++)
 #define f(i,y) for (int i = 0; i < y; i++)
@@ -26,19 +27,19 @@ return res;
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
-    vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    int a,b;
+    cin>>a>>b;
+    int ans=INT_MAX;
+    f(i,32){
+        int p = i+b;
+        int ops = i;
+        int a_c = a; 
+        if(p == 1)continue;
+        while(a_c > 0){
+            a_c /= p;
+            ops++;
+        }
+        ans = min(ans,ops);
     }
     cout<<ans<<el;
 }
@@ -46,6 +47,7 @@ void sloved_by_Arindam() {
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

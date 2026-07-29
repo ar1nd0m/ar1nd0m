@@ -26,19 +26,16 @@ return res;
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
-    vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    int w,h;
+    cin>>w>>h;
+    int q = 4;
+    int ans = 0;
+    while(q--){
+        int k;
+        cin>>k;
+        vin(a,k);
+        if(q >= 2)ans  = max(ans,h * (a[k-1] - a[0]));
+        else ans  = max(ans,w * (a[k-1] - a[0]));
     }
     cout<<ans<<el;
 }
@@ -46,6 +43,7 @@ void sloved_by_Arindam() {
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

@@ -18,34 +18,46 @@ return res;
 #define mx_e(a) *max_element(a.begin(), a.end())
 #define mn_e(a) *min_element(a.begin(), a.end())
 #define vin(a, n)vector<int> a(n); for (int i=0;i<n;i++) cin >> a[i];
-#define vout(a) for (auto i : a) cout << i << ' '; cout << "\n";
+#define vout(a) for (auto i : a) cout << i.first << ' '<<i.second; cout << "\n";
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define st(v, x) (x == 1 ? sort(v.begin(), v.end()) : sort(v.rbegin(), v.rend()))
 #define int long long
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
+bool cmp(pair<int,int> a,pair<int,int> b){
+    return a.second<b.second;
+}
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
+    int n,k;
+    cin>>n>>k;
     vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    vin(b,n);
+    vector<pair<int,int>> v(n);
+    f(i,n)v[i]=make_pair(a[i],b[i]);
+    sort(v.begin(),v.end(),cmp);
+    int c=1;
+    int p=k;
+    if(p < v[0].second){
+        cout<<n*p<<el;
+        return;
     }
-    cout<<ans<<el;
+    f(i,n){
+        if(c+v[i].first > n){
+            k += (n-c)*v[i].second;
+            break;
+        }else {
+        k += v[i].first*v[i].second;
+        c += v[i].first;
+    }
+    }
+    cout<<k<<el;
 }
 
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

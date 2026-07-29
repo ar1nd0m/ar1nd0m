@@ -25,27 +25,30 @@ return res;
 #define int long long
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
-void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
-    vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+int cnt_len_sub_str(string &a,string &b,int m,int n){
+    if(m == 0 or n == 0 or a[m-1] != b[n-1])return 0;
+    return 1+cnt_len_sub_str(a,b,m-1,n-1);
+}
+int longCommSubstr(string &a,string &b){
+    int ans = 0;
+    fx(i,1,a.size()+1){
+        fx(j,1,b.size()+1){
+            ans = max(ans,cnt_len_sub_str(a,b,i,j));
+        }
     }
-    cout<<ans<<el;
+    return ans;
+}
+void sloved_by_Arindam() {
+    string a;
+    string b;
+    cin>>a>>b;
+    cout<<a.size()+b.size()-2*longCommSubstr(a,b)<<el;
 }
 
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

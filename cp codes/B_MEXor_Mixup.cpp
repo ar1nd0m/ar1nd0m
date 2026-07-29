@@ -25,27 +25,31 @@ return res;
 #define int long long
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
+const int NUM_SIZE = 300005;
+int B_XOR_ARR[NUM_SIZE];
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
-    vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    int a,b;
+    cin>>a>>b;
+    int x = B_XOR_ARR[a-1];
+    if(x == b){
+        cout<<a<<el;
+    }else{
+        if(a != (b^x))cout<<a+1<<el;
+        else cout<<a+2<<el;
     }
-    cout<<ans<<el;
+    f(i,a)cout<<B_XOR_ARR[i]<<" ";
+    cout<<el;
 }
 
 int32_t main() {
+    
     fast_io;
     int t=1;
+    cin >> t;
+    B_XOR_ARR[0]=0;
+    fx(i,1,NUM_SIZE){
+        B_XOR_ARR[i] = B_XOR_ARR[i-1]^i;
+    }
     while (t--) {
        sloved_by_Arindam();
     }

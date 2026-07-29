@@ -26,26 +26,16 @@ return res;
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
-    vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
-    }
-    cout<<ans<<el;
+    vector<int> a(3);
+    cin>>a[0]>>a[1]>>a[2];
+    sort(a.begin(),a.end());
+    cout<<a[1]<<el;
 }
 
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

@@ -25,19 +25,34 @@ return res;
 #define int long long
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
-void Ads_Solution() {
-    int n = 7; // 111
-    int x = n<<1; // 1110
-    cout<<x<<endl;
-    x = n>>2; // 11 = 3
-    cout<<x<<endl;
+void sloved_by_Arindam() {
+    int n;
+    char c;
+    string s;
+    cin>>n>>c;
+    cin>>s;
+    s += s;
+    n *= 2;
+    int g_indx=0;
+    int c_inx=0;
+    int mx =-1;
+    f(i,n){
+        if(s[n-1-i] == 'g'){
+            g_indx=n-1-i;
+        }
+        if(s[n-1-i] == c){
+            mx = max(mx,g_indx-n+1+i);
+        }
+    }
+ 
+    cout<<mx<<el;
 }
 
 int32_t main() {
     fast_io;
     int t=1;
-    // cin >> t;
+    cin >> t;
     while (t--) {
-       Ads_Solution();
+       sloved_by_Arindam();
     }
 }

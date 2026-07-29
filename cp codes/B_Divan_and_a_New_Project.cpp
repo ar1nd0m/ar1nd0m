@@ -26,26 +26,42 @@ return res;
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
+    int n;
+    cin>>n;
     vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    vector<pair<int,int>> vp;
+    f(i,n)vp.push_back({a[i],i});
+    st(vp,0);
+    //vector<int>b(n);
+    //st(b,0);
+    // for(auto w:b){
+    //    ans += c * w;
+    //    if(ok){ok=0;mp[w] = c;}
+    //    else{ok=1;mp[w] = (-c);c++;}
+    // }
+    //vector pair use korsi karon times ta distinct na tai index overriding hote pare 
+    bool ok=1;
+    int mid =n/2;
+    int c=1;
+    int ans = 0;
+    map<int,int> mp;
+    for(auto w:vp){
+       ans += c * w.first;
+       if(ok){ok=0;mp[w.second] = mid+c;}
+       else{ok=1;mp[w.second] = (mid-c);c++;}
     }
-    cout<<ans<<el;
+    cout<<2*ans<<el;
+    cout<<mid<<" ";
+    f(i,n){
+        cout<<mp[i]<<" ";
+    }
+    cout<<el;
 }
 
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

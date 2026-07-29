@@ -26,26 +26,28 @@ return res;
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
-    vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    int n;
+    cin>>n;
+    vector<int> ans;
+    int power=1;
+    while(n>0){
+        if(n % 10){
+            ans.push_back((n%10) * power);
+        }
+        n /= 10;
+        power*=10;
     }
-    cout<<ans<<el;
+   cout<<ans.size()<<endl;
+   for(auto x:ans){
+    cout<<x<<" ";
+   }
+   cout<<endl;
 }
 
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

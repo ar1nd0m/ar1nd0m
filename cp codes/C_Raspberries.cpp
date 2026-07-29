@@ -2,6 +2,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int power(int x, unsigned int y){
+int res = 1;
+while (y > 0) {
+if (y & 1)
+res = res * x;
+y = y >> 1;
+x = x * x;
+}
+return res;
+}
 #define fast_io ios::sync_with_stdio(0); cin.tie(0);
 #define fx(i, x, y) for (int i = x; i < y; i++)
 #define f(i,y) for (int i = 0; i < y; i++)
@@ -13,27 +23,27 @@ using namespace std;
 #define no cout << "NO\n"
 #define st(v, x) (x == 1 ? sort(v.begin(), v.end()) : sort(v.rbegin(), v.rend()))
 #define int long long
-
-void Ads_Solution() {
-  int n,k;
-  cin>>n>>k;
-  vin(a,n);
-  int mn=INT_MAX; 
-  int even =0;
-  f(i,n)if(a[i]%2 ==0)even++;
-  f(i,n){
-    if(a[i] % k==0){mn=0;break;}
-    int d=a[i]/k;
-    d++;
-    mn = min(mn,(d*k)-a[i]);
-  }
-  if(k != 4){
-    cout<<mn<<endl;
-  }else{
-    if(even >=2)cout<<0<<endl;
-    else if(even == 1)cout<<min(mn,1LL)<<endl;
-    else if(even == 0)cout<<min(mn,2LL)<<endl;
-  }
+#define sum(a) accumulate(a.begin(), a.end(),0)
+#define el endl
+void sloved_by_Arindam() {
+int n,k;
+cin>>n>>k;
+vin(a,n);
+int mn=INT_MAX;
+int oc=0;
+int ec=0;
+f(i,n)if(a[i] % 2)oc++;
+else ec++;
+if(k == 4){
+    if(oc > 1)mn=2;
+    if(ec == 1)mn=1;
+    if(ec > 1)mn=0;
+}
+f(i,n){
+    if(!(a[i] % k))mn=0;
+    mn= min(mn,k-(a[i] % k));
+}
+cout<<mn<<el;
 }
 
 int32_t main() {
@@ -41,6 +51,6 @@ int32_t main() {
     int t=1;
     cin >> t;
     while (t--) {
-       Ads_Solution();
+       sloved_by_Arindam();
     }
 }

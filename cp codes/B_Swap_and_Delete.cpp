@@ -2,6 +2,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int power(int x, unsigned int y){
+int res = 1;
+while (y > 0) {
+if (y & 1)
+res = res * x;
+y = y >> 1;
+x = x * x;
+}
+return res;
+}
 #define fast_io ios::sync_with_stdio(0); cin.tie(0);
 #define fx(i, x, y) for (int i = x; i < y; i++)
 #define f(i,y) for (int i = 0; i < y; i++)
@@ -13,19 +23,19 @@ using namespace std;
 #define no cout << "NO\n"
 #define st(v, x) (x == 1 ? sort(v.begin(), v.end()) : sort(v.rbegin(), v.rend()))
 #define int long long
-
-void Ads_Solution() {
-  string a;
-  cin>>a;
-  int x=0,y=0;
-  f(i,a.size())if(a[i] == '1')x++;
-  y=a.size()-x;
-  int i;
-  for (i = 0; i < a.size(); i++){
-    if(a[i] == '1'){if(y>0)y--;else break;}
-    else {if(x>0)x--;else break;}   
-  }
-  cout<<a.size()-i<<endl;
+#define sum(a) accumulate(a.begin(), a.end(),0)
+#define el endl
+void sloved_by_Arindam() {
+    string a;
+    cin>>a;
+   int one= count(a.begin(),a.end(),'1');
+   int zero=count(a.begin(),a.end(),'0');
+   f(i,a.size()){
+    if(a[i] == '0')one--;
+    else zero--;
+    if(one < 0 or zero < 0){cout<<a.size()-i<<el;return;}
+   }
+   cout<<0<<el;
 }
 
 int32_t main() {
@@ -33,6 +43,6 @@ int32_t main() {
     int t=1;
     cin >> t;
     while (t--) {
-       Ads_Solution();
+       sloved_by_Arindam();
     }
 }

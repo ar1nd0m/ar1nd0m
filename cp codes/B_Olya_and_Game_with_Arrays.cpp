@@ -2,6 +2,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int power(int x, unsigned int y){
+int res = 1;
+while (y > 0) {
+if (y & 1)
+res = res * x;
+y = y >> 1;
+x = x * x;
+}
+return res;
+}
 #define fast_io ios::sync_with_stdio(0); cin.tie(0);
 #define fx(i, x, y) for (int i = x; i < y; i++)
 #define f(i,y) for (int i = 0; i < y; i++)
@@ -15,22 +25,22 @@ using namespace std;
 #define int long long
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
-void Ads_Solution() {
-  int n;
-  cin>>n;
-  int sum=0;
-  int mn=INT_MAX;
-  int mn2=INT_MAX;
-  f(j,n){
-    int x;
-    cin>>x;
-    vin(a,x);
-    st(a,1);
-    mn = min(mn,a[0]);
-    mn2=min(mn2,a[1]);
-    sum+=a[1];
-  }
-  cout<<sum-mn2+mn<<el;
+void sloved_by_Arindam() {
+    int n;
+    cin>>n;
+    int ans=0;
+    int mn=INT_MAX;
+    int s_mn=INT_MAX;
+    while(n--){
+        int s;
+        cin>>s;
+        vin(a,s);
+        st(a,1);
+        ans +=a[1];
+        mn=min(mn,a[0]);
+        s_mn=min(s_mn,a[1]);
+    }
+    cout<<ans-s_mn+mn<<el;
 }
 
 int32_t main() {
@@ -38,6 +48,6 @@ int32_t main() {
     int t=1;
     cin >> t;
     while (t--) {
-       Ads_Solution();
+       sloved_by_Arindam();
     }
 }

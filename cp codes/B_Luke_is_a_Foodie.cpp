@@ -1,16 +1,14 @@
 /*ॐ वासुदेवाय नमः*/
 #include <bits/stdc++.h>
 using namespace std;
-
 int power(int x, unsigned int y){
-int res = 1;
-while (y > 0) {
-if (y & 1)
-res = res * x;
-y = y >> 1;
-x = x * x;
-}
-return res;
+    int res = 1;
+    while (y > 0) {
+        if (y & 1)res = res * x;
+            y = y >> 1;
+            x = x * x;
+    }
+    return res;
 }
 #define fast_io ios::sync_with_stdio(0); cin.tie(0);
 #define fx(i, x, y) for (int i = x; i < y; i++)
@@ -26,19 +24,23 @@ return res;
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
+    int n,k;
+    cin>>n>>k;
     vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    int ans=0;
+    int l = a[0] - k;
+    int r = a[0] + k;
+    fx(i,1,n){
+      int n_l = max(l,a[i]-k);
+      int n_r = min(r,a[i]+k);
+      if(n_l > n_r){
+        ans++;
+        l = a[i]-k;
+        r = a[i]+k;
+      }else {
+        l = n_l;
+        r = n_r;
+      }
     }
     cout<<ans<<el;
 }
@@ -46,6 +48,7 @@ void sloved_by_Arindam() {
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }

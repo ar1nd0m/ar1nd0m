@@ -18,7 +18,7 @@ return res;
 #define mx_e(a) *max_element(a.begin(), a.end())
 #define mn_e(a) *min_element(a.begin(), a.end())
 #define vin(a, n)vector<int> a(n); for (int i=0;i<n;i++) cin >> a[i];
-#define vout(a) for (auto i : a) cout << i << ' '; cout << "\n";
+#define vout(a) for (auto i : a) cout << i+1 << ' '; cout << "\n";
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define st(v, x) (x == 1 ? sort(v.begin(), v.end()) : sort(v.rbegin(), v.rend()))
@@ -26,26 +26,30 @@ return res;
 #define sum(a) accumulate(a.begin(), a.end(),0)
 #define el endl
 void sloved_by_Arindam() {
-    int n,d;
-    cin>>n>>d;
+    int n;
+    cin>>n;
     vin(a,n);
-    st(a,0);
-    int ans =0;
-    int cnt=0;
-    f(i,n){
-        int tmp = d /a[i];
-        tmp++;
-        if( tmp * a[i] <= d)tmp++;
-        cnt +=  tmp;
-        if(cnt <= n)ans++;
-        else break;
+    vector<int> ans(n);
+    f(i,n)ans[i]=i;
+    fx(i,1,n){
+        if(a[i-1] == a[i]){
+            swap(ans[i-1],ans[i]);
+        }
     }
-    cout<<ans<<el;
+    bool ok=0;
+    f(i,n){
+        if(i == ans[i]){
+            cout<<-1<<endl;
+            return;
+        }
+    }
+    vout(ans);
 }
 
 int32_t main() {
     fast_io;
     int t=1;
+    cin >> t;
     while (t--) {
        sloved_by_Arindam();
     }
